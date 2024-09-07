@@ -1,1 +1,1 @@
-# CoderByte-Challenges
+# CoderByte Challenges

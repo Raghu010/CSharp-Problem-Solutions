@@ -22,6 +22,8 @@ class Result
      * The function accepts INTEGER_ARRAY a as parameter.
      */
 
+    //Problem Statement: Finding the unqiue element or the LonelyInteger in the List of Elements.
+
     public static int lonelyinteger(List<int> a)
     {
         int result = 0;

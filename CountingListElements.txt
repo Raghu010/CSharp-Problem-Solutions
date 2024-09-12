@@ -1,0 +1,66 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Result
+{
+
+    /*
+     * Complete the 'countingSort' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts INTEGER_ARRAY arr as parameter.
+     */
+
+    //Problem statement: Counting the list elements.
+    public static List<int> countingListElements(List<int> arr)
+    {
+        List<int> freqList = new List<int>();
+        int maxNum = arr.Max();
+        Dictionary<int, int> dict = new Dictionary<int, int>();
+
+        foreach (int i in arr)
+        {
+            if (dict.ContainsKey(i))
+            {
+                dict[i]++;
+            }
+            else
+            {
+                dict[i] = 1;
+            }
+        }
+
+        foreach (var kvp in dict)
+        {
+            freqList.Add(kvp.Value);
+        }
+        return freqList;
+    }
+}
+
+class Solution
+{
+    public static void Main(string[] args)
+    { 
+
+        List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
+        List<int> result = Result.countingListElements(arr);
+
+        foreach (var item in result)
+        {
+            Console.Write(item.ToString() + " ");
+        }
+        Console.ReadKey();
+    }
+}

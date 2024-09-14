@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+class Solution
+{
+    //Problem Statement: Have the function AlphabetSoup(str) take the str string parameter being 
+    // passed and return the string with the letters in alphabetical order (ie. 
+    // hello becomes ehllo). Assume numbers and punctuation symbols will not 
+    // be included in the string.
+    public static string AlphabetSoup(string str)
+    {
+        char[] chars = str.ToCharArray();
+        List<char> charList = chars.ToList();
+        charList.Sort();
+        string sortedString = "";
+        foreach (char item in charList)
+        {
+            sortedString = sortedString + item;
+        }
+        return sortedString;
+    }
+    static void Main(String[] args)
+    {
+        string str = Console.ReadLine();
+        string result = Solution.AlphabetSoup(str);
+        Console.WriteLine(result);
+        Console.ReadKey();
+    }
+}

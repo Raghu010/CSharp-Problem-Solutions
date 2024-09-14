@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+class Solution
+{
+    /*Problem Statement: Have the function LetterChanges(str) take the str parameter being passed and 
+      modify it using the following algorithm. Replace every letter in the string 
+      with the letter following it in the alphabet (ie. c becomes d, z becomes a). 
+      Then capitalize every vowel in this new string (a, e, i, o, u) and finally 
+      return this modified string.*/
+
+    public static string LetterChanges(string str)
+    {
+        char[] charArr = str.ToCharArray();
+        List<int> ints = new List<int>();
+        string output = "";
+
+        foreach (var item in ASCIIEncoding.ASCII.GetBytes(charArr))
+        {
+            ints.Add((int)item);
+        }
+
+        foreach (int i in ints)
+        {
+            if ((char)i == 'a' || (char)i == 'e' || (char)i == 'i' || (char)i == 'o' || (char)i == 'u')
+            {
+                char c = ((char)i);
+                output += c.ToString().ToUpper();
+            }
+            else
+            {
+                char c = ((char)(i + 1));
+                output += c.ToString();
+            }
+        }
+        return output;
+    }
+    static void Main(String[] args)
+    {
+        string str = Console.ReadLine();
+        string result = Solution.LetterChanges(str);
+        Console.WriteLine(result);
+        Console.ReadKey();
+    }
+}

@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+class Solution
+{
+    /*Problem Statement: Finding the longest word in a string.*/
+
+    public static string LongestWord(string str)
+    {
+        string[] strArr = str.Split(' ');
+        string result = "";
+
+        for (int i = 1; i < strArr.Length; i++)
+        {
+            if (strArr[i-1].Length > strArr[i].Length)
+            {
+                result = strArr[i-1];
+            }
+            else
+            {
+                result = strArr[i];
+            }
+        }
+        return result;
+    }
+    static void Main(String[] args)
+    {
+        string str = Console.ReadLine();
+        string Result = Solution.LongestWord(str);
+        Console.WriteLine(Result);
+        Console.ReadKey();
+    }
+}

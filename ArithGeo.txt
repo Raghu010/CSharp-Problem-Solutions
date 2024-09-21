@@ -1,0 +1,83 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Result
+{
+
+    /*
+     * Complete the 'countingSort' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts INTEGER_ARRAY arr as parameter.
+     */
+
+    public static string ArithGeo(List<int> arr)
+    {
+        // Problem statement: The function ArithGeo(arr) takes an array of numbers stored in arr and return 
+        // the string "Arithmetic" if the sequence follows an arithmetic pattern or return 
+        // "Geometric" if it follows a geometric pattern.If the sequence doesn't follow 
+        // either pattern return -1. An arithmetic sequence is one where the difference 
+        // between each of the numbers is consistent, where as in a geometric sequence, 
+        // each term after the first is multiplied by some constant or common ratio. 
+
+        // Arithmetic example: [2, 4, 6, 8] and Geometric example: [2, 6, 18, 54]. 
+        // Negative numbers may be entered as parameters, 0 will not be entered, and 
+        // no array will contain all the same elements.
+
+        int diff = 0;
+        double pr = 0.0;
+        List<int> diffList = new List<int>();
+        List<double> prList = new List<double>();
+        string result = "-1";
+
+        for (int i = 1; i < arr.Count; i++) 
+        {
+            diff = arr[i] - arr[i - 1];
+            diffList.Add(diff);
+
+            pr = (double)arr[i] / (double)arr[i - 1];
+            prList.Add(pr);
+        }
+
+        for (int j = 1; j < diffList.Count; j++)
+        {
+            if (diffList[j - 1] == diffList[j])
+            {
+                result = "Arithmetic";
+            }
+        }
+
+        for (int k = 1; k < prList.Count; k++)
+        {
+            if (prList[k - 1] == prList[k])
+            {
+                result = "Geometric";
+            }
+        }
+        return result;
+    }
+
+}
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
+        string result = Result.ArithGeo(arr);
+
+        Console.WriteLine(result);
+        Console.ReadKey();
+    }
+}

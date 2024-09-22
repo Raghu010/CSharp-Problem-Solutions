@@ -1,0 +1,57 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Result
+{
+    /*Problem statement: Print the fibonacci series for the given input value.*/
+
+    public static List<int> FibSeries(int n)
+    {
+        List<int> fibSeries = new List<int>();
+        int num = 0;
+
+        if (n == 1)
+        {
+            fibSeries.Add(0);
+        }
+        else if (n == 2)
+        {
+            fibSeries.Add(0);
+            fibSeries.Add(1);
+        }
+        else
+        {
+            fibSeries.Add(0);
+            fibSeries.Add(1);
+            for (int i = 1; i <= n - 2; i++)
+            {
+                num = fibSeries[i] + fibSeries[i-1];
+                fibSeries.Add(num);
+            }
+        }
+        return fibSeries;
+    }
+
+    public static void Main()
+    {
+        int input = int.Parse(Console.ReadLine());
+        List<int> result = Result.FibSeries(input);
+
+        foreach (int item in result)
+        {
+            Console.Write(item.ToString() + " ");
+        }
+        Console.ReadKey();
+    }
+}

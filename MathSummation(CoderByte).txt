@@ -1,0 +1,37 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Result
+{
+    /*Problem statement: Summation of all the numbers upto input n.*/
+
+    public static int MathSummation(int n)
+    {
+        int output = 0;
+        for (int i = 1; i <= n; i++) 
+        {
+            output = output + i;
+        }
+        return output;
+    }
+
+    public static void Main()
+    {
+        int input = int.Parse(Console.ReadLine());
+        int result = Result.MathSummation(input);
+
+        Console.WriteLine(result);
+        Console.ReadKey();
+    }
+}

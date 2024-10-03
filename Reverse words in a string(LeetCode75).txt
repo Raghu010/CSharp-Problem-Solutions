@@ -1,0 +1,42 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+public class Solution
+{
+    /*Problem statement: Reverse a string without trailing, leading and extra spaces between the words.*/
+   public string ReverseWords(string s)
+   {
+        s = s.Trim();
+        string trimmedStr = "";
+        string Pattern = @"\s{2,}";
+        if (Regex.IsMatch(s, Pattern))
+        {
+            s = Regex.Replace(s, Pattern, " ");
+        }
+        IEnumerable<string> splitStr = s.Split(' ').Reverse();
+        foreach (string str in splitStr)
+        {
+            trimmedStr = trimmedStr + str + " ";
+        }
+        return trimmedStr.TrimEnd();
+   }
+
+   public static void Main()
+   {
+        Solution solution = new Solution();
+        string s = Console.ReadLine();
+        Console.WriteLine(solution.ReverseWords(s));
+        Console.ReadKey();
+   }
+}

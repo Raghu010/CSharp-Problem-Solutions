@@ -1,0 +1,58 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Result
+{
+    public static List<int> countingSort(List<int> arr)
+    {
+        List<int> output = new List<int>();
+        int MaxElement = arr.Max();
+        for (int i = 0; i < 100; i++) 
+        {
+            int count = 0;
+            if (!arr.Contains(i))
+            {
+                output.Add(count);
+            }
+            else
+            {
+                for (int j = 0; j < arr.Count; j++)
+                {
+                    if (i.Equals(arr[j]))
+                    {
+                        count = count + 1;
+                    }
+                }
+                output.Add(count);
+            }
+        }
+        return output;
+    }
+
+}
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        int n = Convert.ToInt32(Console.ReadLine().Trim());
+        List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
+        List<int> result = Result.countingSort(arr);
+        foreach (int i in result) 
+        {
+            Console.WriteLine(i);
+        }
+        Console.ReadKey();
+    }
+}

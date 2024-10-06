@@ -1,0 +1,64 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Result
+{
+
+    /*Recursive digit sum solution without optimization.*/
+
+    public static int superDigit(string n, int k)
+    {
+        int returnedVal = 0;
+        string val = "";
+        StringBuilder sb = new StringBuilder(n.Length * k);
+        for (int i = 0; i < k; i++)
+        {
+            val = sb.Append(n).ToString();
+        }
+        returnedVal = Result.func(val);
+        if (returnedVal.ToString().Length > 1)
+        {
+            returnedVal = superDigit(returnedVal.ToString(), 1);
+            returnedVal = func(returnedVal.ToString());
+        }
+        else
+        {
+            returnedVal = int.Parse(returnedVal.ToString());
+        }
+        return returnedVal;
+    }
+
+    public static int func(string str) 
+    {
+        int result = int.Parse(str[0].ToString());
+        for (int i = 1; i < str.Length; i++)
+        {
+            result = result + int.Parse(str[i].ToString());
+        }
+        return result;
+    }
+}
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        string[] firstMultipleInput = Console.ReadLine().TrimEnd().Split(' ');
+        string n = firstMultipleInput[0];
+        int k = Convert.ToInt32(firstMultipleInput[1]);
+        int result = Result.superDigit(n, k);
+        Console.WriteLine(result);
+        Console.ReadKey();
+    }
+}

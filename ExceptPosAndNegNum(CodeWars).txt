@@ -1,0 +1,33 @@
+/*Problem statement: Given an array of integers whose elements have both a negative and a positive value, except for one integer that is either only negative or only 
+positive. Find that integer.*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Configuration;
+using System.Data.SqlClient;
+
+namespace Practice
+{
+    public class Kata
+    {
+        public static int Solve(List<int> arr)
+        {
+            return arr.Distinct().Sum();
+        }
+
+        static void Main()
+        {
+            int listCount = int.Parse(Console.ReadLine());
+            List<int> arrList = new List<int>();
+            for (int i = 0; i < listCount; i++)
+            {
+                arrList.Add(int.Parse(Console.ReadLine()));
+            }
+            Console.WriteLine(Solve(arrList));
+            Console.ReadKey();
+        }
+    }
+    
+}

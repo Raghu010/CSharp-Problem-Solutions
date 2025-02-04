@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Configuration;
+using System.Data.SqlClient;
+
+namespace Practice
+{
+    public class Kata
+    {
+        public static int ArmstrongNum(int num)
+        {
+            double count = num.ToString().ToCharArray().Length;
+            double result = 0;
+            char[] eachInt = num.ToString().ToCharArray();
+            foreach (char eachChar in eachInt) 
+            {
+                result = result + Math.Pow(double.Parse(eachChar.ToString()), count);
+            }
+            return (int)result;
+        }
+
+        static void Main()
+        {
+            int input = int.Parse(Console.ReadLine());
+            Console.WriteLine(Kata.ArmstrongNum(input));
+            Console.ReadKey();
+        }
+    }
+    
+}

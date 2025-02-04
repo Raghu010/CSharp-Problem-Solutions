@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Configuration;
+using System.Data.SqlClient;
+
+namespace Practice
+{
+    //Problem statement: Write a function that takes in a string of one or more words, and returns the same string, but with all
+    //words that have five or more letters reversed.
+    public class Kata
+    {
+        public static string SpinWords(string sentence)
+        {
+            string[] strArr = sentence.Split(' ');
+            string output = "";
+            for (int i = 0; i < strArr.Length; i++)
+            {
+                if (strArr[i].Length >= 5)
+                {
+                    for (int j = strArr[i].Length - 1; j >= 0; j--)
+                    {
+                        output = output + strArr[i][j];
+                    }
+                    output = output + " ";
+                }
+                else
+                {
+                    output = output + strArr[i] + " ";
+                }
+            }
+            return output.Trim();
+        }
+
+        static void Main()
+        {
+            string input = Console.ReadLine();
+            Console.WriteLine(Kata.SpinWords(input));
+            Console.ReadKey();
+        }
+    }
+    
+}

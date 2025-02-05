@@ -1,0 +1,46 @@
+/*Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.*/
+
+using System;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Configuration;
+using System.Data.SqlClient;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace Practice
+{
+    
+    public class Kata
+    {
+        public static bool XO(string input)
+        {
+            char[] charArr = input.ToCharArray();
+            int ocount = 0;
+            int xcount = 0;
+            foreach (char c in charArr) 
+            {
+                if (c == 'o' || c == 'O')
+                {
+                    ocount = ocount + 1;
+                }
+                else
+                {
+                    xcount = xcount + 1;
+                }
+            }
+            bool output = ocount == xcount ? true : false;
+            return output;
+        }
+
+        static void Main()
+        {
+            string input = Console.ReadLine();
+            bool result = XO(input);
+            Console.WriteLine(result.ToString());
+            Console.ReadKey();
+        }
+    }
+    
+}

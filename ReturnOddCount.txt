@@ -1,0 +1,38 @@
+/*Problem statement: Given a number n, return the number of positive odd numbers below n*/
+
+using System;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Configuration;
+using System.Data.SqlClient;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace Practice
+{
+    
+    public class Kata
+    {
+        public static ulong OddCount(ulong n)
+        {
+            ulong count = 0;
+            for (ulong i = 1; i < n; i++) 
+            {
+                if (i%2 != 0)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
+
+        static void Main()
+        {
+            ulong input = ulong.Parse(Console.ReadLine());
+            Console.WriteLine(OddCount(input));
+            Console.ReadKey();
+        }
+    }
+    
+}

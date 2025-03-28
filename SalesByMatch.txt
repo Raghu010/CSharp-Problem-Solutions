@@ -1,0 +1,23 @@
+public static int sockMerchant(int n, List<int> ar)
+{
+    List<int> outList = new List<int>();
+    List<decimal> decList = new List<decimal>();
+    foreach (int i in ar.Distinct())
+    {
+        int count = 0;
+        for (int j = 0; j < ar.Count; j++)
+        {
+            if (i.Equals(ar[j]))
+            {
+                count += 1;
+            }
+        }
+        outList.Add(count);
+    }
+
+    foreach (var item in outList)
+    {
+        decList.Add(Math.Floor((decimal)item / 2));
+    }
+    return (int)decList.Sum();
+}

@@ -1,0 +1,21 @@
+public class Solution 
+{
+    public bool AreOccurrencesEqual(string s) 
+    {
+        char[] chars = s.ToCharArray();
+        List<int> charCounts = new List<int>();
+        foreach (var i in s.ToCharArray().Distinct())
+        {
+            int count = 0;
+            for (int j = 0; j < chars.Length; j++)
+            {
+                if (i.Equals(chars[j]))
+                {
+                    count += 1;
+                }
+            }
+            charCounts.Add(count);
+        }
+        return charCounts.All(x => x.Equals(charCounts[0]));
+    }
+}

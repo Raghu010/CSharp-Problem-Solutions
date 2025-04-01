@@ -1,0 +1,30 @@
+public class Solution 
+{
+    public int SingleNumber(int[] nums) 
+    {
+        Dictionary<int, int> elementCount = new Dictionary<int, int>();
+        int[] intArr = nums.Distinct().ToArray();
+        int output = 0;
+        foreach (var item in intArr)
+        {
+            int count = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (item == nums[i])
+                {
+                    count = count + 1;
+                }
+            }
+            elementCount[item] = count;
+        }
+
+        foreach (var kvp in elementCount)
+        {
+            if (kvp.Value == 1)
+            {
+                output = kvp.Key;
+            }
+        }
+        return output;
+    }
+}

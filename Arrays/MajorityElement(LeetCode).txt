@@ -1,0 +1,30 @@
+public class Solution 
+{
+    public int MajorityElement(int[] nums) 
+    {
+        double totalElements = nums.Length;
+        Dictionary<int, int> dict = new Dictionary<int, int>();
+        int result = 0;
+        foreach (var item in nums.Distinct())
+        {
+            int count = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (item == nums[i])
+                {
+                    count = count + 1;
+                }
+            }
+            dict[item] = count;
+        }
+
+        foreach (var kvp in dict)
+        {
+            if (kvp.Value > (totalElements/2))
+            {
+                result = kvp.Key;
+            }
+        }
+        return result;
+    }
+}

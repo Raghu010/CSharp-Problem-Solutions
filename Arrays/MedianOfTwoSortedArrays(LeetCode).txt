@@ -1,0 +1,17 @@
+public class Solution 
+{
+    public double FindMedianSortedArrays(int[] nums1, int[] nums2) 
+    {
+        int[] mergedArr = nums1.Concat(nums2).ToArray();
+        double[] typeConvArr = mergedArr.Select(x => (double)x).ToArray();
+        Array.Sort(typeConvArr);
+        if (mergedArr.Length % 2 != 0)
+        {
+            return typeConvArr[typeConvArr.Length/2];
+        }
+        else
+        {
+            return (typeConvArr[typeConvArr.Length / 2 - 1] + typeConvArr[typeConvArr.Length/2]) / 2;
+        }
+    }
+}

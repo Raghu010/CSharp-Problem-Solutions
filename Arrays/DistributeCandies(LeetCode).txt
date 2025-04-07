@@ -1,0 +1,17 @@
+public class Solution 
+{
+    public int DistributeCandies(int[] candyType) 
+    {
+        int canEat = candyType.Length / 2;
+        int output = 0;
+        if (canEat >= candyType.Distinct().Count())
+        {
+            output = candyType.Distinct().Count();
+        }
+        else
+        {
+            output = canEat;
+        }
+        return output;
+    }
+}

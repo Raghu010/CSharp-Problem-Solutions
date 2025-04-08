@@ -1,0 +1,9 @@
+public class Solution 
+{
+    public int LengthOfLastWord(string s) 
+    {
+        s = s.Trim();
+        string[] strArr = s.Split(' ');
+        return strArr[strArr.Length - 1].ToCharArray().Length;
+    }
+}

@@ -1,0 +1,18 @@
+using System.Text.RegularExpressions;
+
+public class Solution 
+{
+    public bool IsPalindrome(string s) 
+    {
+        s = Regex.Replace(s, "[^a-zA-Z0-9]", "");
+        string input = new string(s.Where(c => !char.IsPunctuation(c)).ToArray());
+        input = input.Replace(" ", "").ToLower();
+        string reversed = "";
+
+        foreach (var item in input.Reverse())
+        {
+            reversed = reversed + item;
+        }
+        return input.Equals(reversed) ? true : false;
+    }
+}

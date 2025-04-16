@@ -1,0 +1,19 @@
+public class Solution 
+{
+    public string ReverseWords(string s) 
+    {
+        var reversedChars = s.Reverse();
+        string reversed = "";
+        string output = string.Empty;
+        foreach (char c in reversedChars) 
+        {
+            reversed = reversed + c;
+        }
+        string[] spaceSplit = reversed.Split(' ');
+        for (int i = spaceSplit.Length - 1; i >= 0; i--)
+        {
+            output = output + spaceSplit[i] + " ";
+        }
+        return output.Trim(); 
+    }
+}

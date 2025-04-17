@@ -1,0 +1,41 @@
+public class Solution 
+{
+    public string ReverseOnlyLetters(string s) 
+    {
+        char[] chars = s.ToCharArray();
+        int i = 0;
+        int j = chars.Length - 1;
+        string output = "";
+
+        while (i < j) 
+        {
+            if (char.IsLetter(chars[i]) && char.IsLetter(chars[j]))
+            {
+                Swap(chars, i, j);
+                i++;
+                j--;
+            }
+            else if (!char.IsLetter(chars[i]))
+            {
+                i++;
+            }
+            else if (!char.IsLetter(chars[j]))
+            {
+                j--;
+            }
+        }
+
+        foreach (var c in chars)
+        {
+            output = output + c;
+        }
+        return output;
+    }
+
+    private void Swap(char[] c, int i, int j)
+    {
+        char temp = c[i];
+        c[i] = c[j];
+        c[j] = temp;
+    }
+}

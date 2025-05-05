@@ -1,0 +1,28 @@
+public class Solution 
+{
+    public int FindContentChildren(int[] g, int[] s) 
+    {
+        int result = 0;
+        int content = 0;
+        if (g.Length == 0 || s.Length == 0)
+        {
+            return result;
+        }
+        else if(s.Length < g.Length)
+        {
+            result = s.Length;
+        }
+        else
+        {
+            content = s.Max();
+            for (int i = 0; i < g.Length; i++)
+            {
+                if (g[i] <= content)
+                {
+                    result += 1;
+                }
+            }
+        }
+        return result;
+    }
+}

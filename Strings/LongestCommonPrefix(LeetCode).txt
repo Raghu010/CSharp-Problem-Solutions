@@ -1,0 +1,47 @@
+public class Solution 
+{
+    public string LongestCommonPrefix(string[] strs) 
+    {
+        string maxLengthStr = strs.OrderByDescending(s => s.Length).First();
+        char[] chars = maxLengthStr.ToCharArray();
+        List<string> commonStrs = new List<string>();
+        if (strs.Length == 1 || strs.All(s => s == maxLengthStr))
+        {
+            return strs[0];
+        }
+        else if (strs.Contains(""))
+        {
+            return "";
+        }
+        else
+        {
+            foreach (var item in strs)
+            {
+                string charConcat = "";
+                if (!(item == maxLengthStr)  )
+                {
+                    if (item.StartsWith(chars[0].ToString()))
+                    {
+                        for (int i = 0; i < item.ToCharArray().Length; i++)
+                        {
+                            if (chars[i] == item[i])
+                            {
+                                charConcat += chars[i];
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        charConcat = "";
+                    }
+                    commonStrs.Add(charConcat);
+                }
+            }
+        }
+        return commonStrs.Count != 0 ? commonStrs.Min() : "";
+    }
+}

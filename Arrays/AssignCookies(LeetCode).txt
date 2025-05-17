@@ -2,27 +2,22 @@ public class Solution
 {
     public int FindContentChildren(int[] g, int[] s) 
     {
-        int result = 0;
-        int content = 0;
-        if (g.Length == 0 || s.Length == 0)
+        int count = 0;
+        int iterator = 0;
+        Array.Sort(g);
+        Array.Sort(s);
+        for (int i = 0; i < s.Length; i++) 
         {
-            return result;
-        }
-        else if(s.Length < g.Length)
-        {
-            result = s.Length;
-        }
-        else
-        {
-            content = s.Max();
-            for (int i = 0; i < g.Length; i++)
+            for (int j = iterator; j < g.Length; j++)
             {
-                if (g[i] <= content)
+                if (s[i] >= g[j]) 
                 {
-                    result += 1;
+                    count += 1;
+                    iterator += 1;
+                    break;
                 }
             }
         }
-        return result;
+        return count;
     }
 }

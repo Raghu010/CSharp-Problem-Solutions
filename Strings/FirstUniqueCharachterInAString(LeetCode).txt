@@ -1,0 +1,17 @@
+public class Solution 
+{
+    public int FirstUniqChar(string s) 
+    {
+        var charCounts = s.GroupBy(c => c).ToDictionary(g => g.Key, g => g.Count());
+        int result = -1;
+        for (int i = 0; i < s.Length; i++) 
+        {
+            if (charCounts[s[i]] == 1)
+            {
+                result = i;
+                break;
+            }
+        }
+        return result;
+    }
+}

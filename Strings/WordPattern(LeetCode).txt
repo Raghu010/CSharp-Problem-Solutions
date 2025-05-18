@@ -1,0 +1,24 @@
+public class Solution 
+{
+    public bool WordPattern(string pattern, string s) 
+    {
+        var distPatArray = pattern.Distinct().ToArray();
+        var distStrSplit = s.Split(' ').Distinct().ToArray();
+        var patArray = pattern.ToCharArray();
+        Dictionary<char, string> dict = new Dictionary<char, string>();
+        string output = "";
+        if (distPatArray.Length == distStrSplit.Length)
+        {
+            for (int i = 0; i < distPatArray.Length; i++)
+            {
+                dict[distPatArray[i]] = distStrSplit[i];
+            }
+
+            foreach (var ch in patArray)
+            {
+                output = output + dict[ch] + " ";
+            }
+        }
+        return output.Trim() == s;
+    }
+}

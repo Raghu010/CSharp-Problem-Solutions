@@ -1,0 +1,16 @@
+public class Solution 
+{
+    public bool IsSubsequence(string s, string t) 
+    {
+        var chars = t.ToCharArray();
+        string output = "";
+        foreach (char c in chars) 
+        {
+            if (s.Contains(c))
+            {
+                output = output + c;
+            }
+        }
+        return output.Contains(s);
+    }
+}

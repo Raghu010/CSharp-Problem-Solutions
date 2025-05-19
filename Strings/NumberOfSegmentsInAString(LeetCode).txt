@@ -1,0 +1,19 @@
+using System.Text.RegularExpressions;
+
+public class Solution 
+{
+    public int CountSegments(string s) 
+    {
+        int output = 0;
+        string spaceReplaced = Regex.Replace(s.Trim(), @"\s+", " ");
+        if (spaceReplaced == "")
+        {
+            output = 0;
+        }
+        else 
+        {
+            output = spaceReplaced.Split(' ').Length;
+        }
+        return output;
+    }
+}

@@ -1,0 +1,29 @@
+public class Solution 
+{
+    public bool IsHappy(int n) 
+    {
+        bool output = false;
+        while (n > 0)
+        {
+            int sum = 0;
+            foreach (char c in n.ToString())
+            {
+                sum = sum + int.Parse(c.ToString()) * int.Parse(c.ToString()); 
+            }
+            if (sum != 1)
+            {
+                n = sum;
+                if (n.ToString().Length < 2 && n != 7)
+                {
+                    break;
+                }
+            }
+            else
+            {
+                output = true;
+                break;
+            }
+        }
+        return output;
+    }
+}

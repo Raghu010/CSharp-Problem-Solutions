@@ -1,0 +1,23 @@
+public class Solution 
+{
+    public int[] FindErrorNums(int[] nums) 
+    {
+        List<int> result = new List<int>();
+        int max = nums.Length;
+        var duplicate = nums.GroupBy(n => n).Where(g => g.Count() > 1).Select(g => g.Key);
+
+        foreach (var item in duplicate)
+        {
+            result.Add(item);
+        }
+        for (int i = 1; i <= max; i++)
+        {
+            if (!nums.Contains(i))
+            {
+                result.Add(i);
+
+            }
+        }
+        return result.ToArray();
+    }
+}

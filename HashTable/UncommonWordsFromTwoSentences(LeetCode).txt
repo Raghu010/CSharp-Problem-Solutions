@@ -1,0 +1,24 @@
+public class Solution 
+{
+    public string[] UncommonFromSentences(string s1, string s2) 
+    {
+        var counts = new Dictionary<string, int>();
+        foreach (string item in s1.Split(' '))
+        {
+            if (counts.ContainsKey(item))
+                counts[item]++;
+            else
+                counts[item] = 1;
+        }
+
+        foreach (string item in s2.Split(' '))
+        {
+            if (counts.ContainsKey(item))
+                counts[item]++;
+            else 
+                counts[item] = 1;
+        }
+
+        return counts.Where(p => p.Value == 1).Select(k => k.Key).ToArray();
+    }
+}

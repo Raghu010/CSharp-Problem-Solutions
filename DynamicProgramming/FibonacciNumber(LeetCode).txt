@@ -1,0 +1,20 @@
+public class Solution 
+{
+    public int Fib(int n) 
+    {
+        List<int> fibonacci = new List<int> { 0, 1 };
+        if (n == 0) 
+            return 0;
+        else if (n == 1)
+            return 1;
+        else
+        {
+            
+            for (int i = 1; i < n; i++)
+            {
+                fibonacci.Add(fibonacci[i] + fibonacci[i - 1]);
+            }
+        }
+        return fibonacci[fibonacci.Count - 2] + fibonacci[fibonacci.Count - 3];
+    }
+}

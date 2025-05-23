@@ -1,0 +1,11 @@
+public class Solution 
+{
+    public bool DetectCapitalUse(string word) 
+    {
+        var islower = word.All(char.IsLower);
+        var isupper = word.All(char.IsUpper);
+        var capitalized = char.IsUpper(word[0]) && word.Substring(1).All(char.IsLower);
+
+        return islower || isupper || capitalized;
+    }
+}

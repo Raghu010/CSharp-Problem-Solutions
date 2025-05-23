@@ -1,0 +1,9 @@
+public class Solution 
+{
+    public int RepeatedNTimes(int[] nums) 
+    {
+        int n = nums.Length / 2;
+        var result = nums.GroupBy(g => g).Where(g => g.Count() == n).Select(g => g.Key).First();
+        return result;
+    }
+}

@@ -1,0 +1,10 @@
+public class Solution 
+{
+    public bool IsPalindrome(int x) 
+    {
+        string converted = x.ToString();
+        var enumarble = converted.Reverse();
+        string reversed = string.Concat(enumarble);
+        return converted.Equals(reversed);
+    }
+}

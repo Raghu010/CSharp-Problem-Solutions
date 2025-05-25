@@ -1,0 +1,23 @@
+public class Solution 
+{
+    public int DominantIndex(int[] nums) 
+    {
+        int index = Array.IndexOf(nums, nums.Max());
+        Array.Sort(nums);
+        int largest = nums.Max();
+        bool output = false;
+        for (int i = 0; i < nums.Length - 1; i++) 
+        {
+            if (largest >= nums[i] + nums[i])
+            {
+                output = true;
+            }
+            else 
+            {
+                output = false;
+                break;
+            }
+        }
+        return output == true ? index : -1;
+    }
+}

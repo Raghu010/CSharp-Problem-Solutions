@@ -1,0 +1,19 @@
+public class Solution 
+{
+    public int[] SortedSquares(int[] nums) 
+    {
+        int[] squared = new int[nums.Length];
+        int[] result = new int[nums.Length];
+        for (int i = 0; i < nums.Length; i++) 
+        {
+            squared[i] = nums[i] * nums[i];
+        }
+        Array.Sort(squared);
+
+        for(int i = 0;i < squared.Length; i++)
+        {
+            result[i] = squared[i];
+        }
+        return result;
+    }
+}

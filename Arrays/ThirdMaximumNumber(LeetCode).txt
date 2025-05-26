@@ -1,0 +1,16 @@
+public class Solution 
+{
+    public int ThirdMax(int[] nums) 
+    {
+        var distArray = nums.Distinct().ToArray();
+        Array.Sort(distArray);
+        if (distArray.Length > 2)
+        {
+            return distArray[distArray.Length - 3];
+        }
+        else 
+        {
+            return distArray.Max();
+        }
+    }
+}

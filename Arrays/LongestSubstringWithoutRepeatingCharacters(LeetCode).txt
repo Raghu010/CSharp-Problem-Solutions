@@ -1,0 +1,26 @@
+public class Solution 
+{
+    public int LengthOfLongestSubstring(string s) 
+    {
+        int start = 0;
+        int maxLength = 0;
+        int startMaxIndex = 0;
+        Dictionary<char, int> seen = new Dictionary<char, int>();
+        for (int end = 0; end < s.Length; end++) 
+        {
+            char currentChar = s[end];
+            if (seen.ContainsKey(currentChar) && seen[currentChar] >= start)
+                start = seen[currentChar] + 1;
+
+            seen[currentChar] = end;
+
+            int currentLength = end - start + 1;
+            if (currentLength > maxLength)
+            {
+                maxLength = currentLength;
+                startMaxIndex = start;
+            }
+        }
+        return s.Substring(startMaxIndex, maxLength).Length;
+    }
+}

@@ -1,0 +1,21 @@
+public class Solution 
+{
+    public int[] SearchRange(int[] nums, int target) 
+    {
+        List<int> output = new List<int>();
+        if (!nums.Contains(target) || nums.Length == 0)
+        {
+            output.Add(-1);
+            output.Add(-1);
+            return output.ToArray();
+        }
+        for(int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] == target)
+            {
+                output.Add(i);
+            } 
+        }
+        return new int[] { output[0], output[output.Count - 1] };
+    }
+}

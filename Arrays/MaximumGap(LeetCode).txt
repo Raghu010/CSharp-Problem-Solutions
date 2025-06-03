@@ -1,0 +1,18 @@
+public class Solution 
+{
+    public int MaximumGap(int[] nums) 
+    {
+        if(nums.Length < 2)
+            return 0;
+        Array.Sort(nums);
+        int diff = nums[1] - nums[0];
+        for(int i = 2; i < nums.Length; i++)
+        {
+            if(diff < (nums[i] - nums[i - 1]))
+            {
+                diff = nums[i] - nums[i - 1];
+            }
+        }
+        return diff; 
+    }
+}

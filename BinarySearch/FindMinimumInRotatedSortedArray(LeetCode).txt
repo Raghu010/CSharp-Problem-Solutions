@@ -1,0 +1,15 @@
+public class Solution 
+{
+    public int FindMin(int[] nums) 
+    {
+        int Min = nums[0];
+        for(int i = 1; i < nums.Length; i++)
+        {
+            if(nums[i] < Min)
+            {
+                Min = nums[i];
+            }
+        }
+        return Min;
+    }
+}

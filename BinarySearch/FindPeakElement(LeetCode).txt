@@ -1,0 +1,17 @@
+public class Solution 
+{
+    public int FindPeakElement(int[] nums) 
+    {
+        int max = nums[0];
+        int output = 0;
+        for(int i = 1; i < nums.Length; i++)
+        {
+            if(nums[i] > max)
+            {
+                max = nums[i];
+                output = i;
+            }
+        }
+        return output;
+    }
+}

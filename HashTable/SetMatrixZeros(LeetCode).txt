@@ -1,0 +1,36 @@
+public class Solution 
+{
+    public void SetZeroes(int[][] matrix) 
+    {
+        HashSet<int> zeroRows = new HashSet<int>();
+        HashSet<int> zeroColumns = new HashSet<int>();
+
+        for (int i = 0; i < matrix.Length; i++) 
+        {
+            for(int j = 0;  j < matrix[i].Length; j++)
+            {
+                if(matrix[i][j] == 0)
+                {
+                    zeroRows.Add(i);
+                    zeroColumns.Add(j);
+                }
+            }
+        }
+
+        foreach(int i in zeroRows)
+        {
+            for(int j = 0; j < matrix[i].Length; j++)
+            {
+                matrix[i][j] = 0;
+            }
+        }
+
+        foreach(int j in zeroColumns)
+        {
+            for(int i = 0; i < matrix.Length; i++)
+            {
+                matrix[i][j] = 0;
+            }
+        }
+    }
+}

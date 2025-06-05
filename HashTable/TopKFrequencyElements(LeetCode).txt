@@ -1,0 +1,22 @@
+public class Solution 
+{
+    public int[] TopKFrequent(int[] nums, int k) 
+    {
+        Dictionary<int, int> dict = new Dictionary<int, int>();
+        List<int> output = new List<int>();
+        foreach (var num in nums)
+        {
+            if (dict.ContainsKey(num))
+                dict[num]++;
+            else
+                dict[num] = 1;
+        }
+
+        var sortedDict = dict.OrderByDescending(kvp => kvp.Value).Take(k);
+        foreach (var kvp in sortedDict) 
+        {
+            output.Add(kvp.Key);
+        }
+        return output.ToArray();
+    }
+}

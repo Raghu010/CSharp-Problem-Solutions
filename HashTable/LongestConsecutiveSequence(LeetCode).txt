@@ -1,0 +1,33 @@
+public class Solution 
+{
+    public int LongestConsecutive(int[] nums) 
+    {
+        if(nums.Length == 0) 
+            return 0;
+        Dictionary<int, int> dict = new Dictionary<int, int>();
+        for (int i = 0; i < nums.Length; i++) 
+        {
+            if(dict.ContainsKey(nums[i]))
+                dict[nums[i]]++;
+            else
+                dict[nums[i]] = 1;
+        }
+
+        var sortedByKeys = dict.OrderBy(kvp => kvp.Key).Select(kvp => kvp.Key).ToList();
+        int maxCount = 1;
+        int currentCount = 1;
+        for (int i = 1; i < sortedByKeys.Count(); i++) 
+        {
+            if (sortedByKeys[i] == sortedByKeys[i-1] + 1)
+            {
+                currentCount++;
+                maxCount = Math.Max(maxCount, currentCount);
+            }
+            else 
+            {
+                currentCount = 1;
+            }
+        }
+        return maxCount;
+    }
+}

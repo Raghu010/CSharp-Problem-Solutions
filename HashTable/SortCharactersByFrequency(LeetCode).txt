@@ -1,0 +1,25 @@
+public class Solution 
+{
+    public string FrequencySort(string s) 
+    {
+        Dictionary<char, int> dict = new Dictionary<char, int>();
+        string output = "";
+        for (int i = 0; i < s.Length; i++) 
+        {
+            if (dict.ContainsKey(s[i]))
+                dict[s[i]]++;
+            else
+                dict[s[i]] = 1;
+        }
+
+        var sortedDict = dict.OrderByDescending(kvp => kvp.Value).ToDictionary(kvp =>  kvp.Key, kvp => kvp.Value);
+        foreach (var kvp in sortedDict) 
+        {
+            for(int i = 0; i < kvp.Value; i++)
+            {
+                output = output + kvp.Key;
+            }
+        }
+        return output;
+    }
+}

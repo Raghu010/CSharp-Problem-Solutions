@@ -1,0 +1,20 @@
+public class Solution 
+{
+    public int MaxFreqSum(string s) 
+    {
+        Dictionary<char, int> dict = new Dictionary<char, int>();
+        HashSet<char> vowels = new HashSet<char>() { 'a', 'e', 'i', 'o', 'u' };
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (dict.ContainsKey(s[i]))
+                dict[s[i]]++;
+            else
+                dict[s[i]] = 1;
+        }
+
+        var maxVowel = dict.Where(kvp => vowels.Contains(kvp.Key)).OrderByDescending(kvp => kvp.Value).FirstOrDefault();
+        var maxConsonant = dict.Where(kvp => !vowels.Contains(kvp.Key)).OrderByDescending (kvp => kvp.Value).FirstOrDefault();
+
+        return maxVowel.Value + maxConsonant.Value;
+    }
+}

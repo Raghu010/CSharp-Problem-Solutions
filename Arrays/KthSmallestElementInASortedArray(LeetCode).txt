@@ -1,0 +1,9 @@
+public class Solution 
+{
+    public int KthSmallest(int[][] matrix, int k) 
+    {
+        int[] flattened = matrix.SelectMany(row => row).ToArray();
+        Array.Sort(flattened);
+        return flattened[k - 1];
+    }
+}

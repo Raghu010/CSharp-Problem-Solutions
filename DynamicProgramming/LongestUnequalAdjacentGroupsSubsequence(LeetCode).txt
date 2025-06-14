@@ -1,0 +1,21 @@
+public class Solution 
+{
+    public IList<string> GetLongestSubsequence(string[] words, int[] groups) 
+    {
+        IList<string> output = new List<string>();
+        if(groups.Length == 0)
+            return output;
+        else
+        {
+            output.Add(words[0]);
+            for (int i = 1; i < groups.Length; i++)
+            {
+                if (groups[i] != groups[i - 1])
+                {
+                    output.Add(words[i]);
+                }
+            }
+            return output;
+        }
+    }
+}

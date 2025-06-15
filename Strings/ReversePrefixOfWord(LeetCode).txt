@@ -1,0 +1,18 @@
+public class Solution 
+{
+    public string ReversePrefix(string word, char ch) 
+    {
+        string output = "";
+        if(string.IsNullOrEmpty(word) || !word.Contains(ch)) 
+            return word;
+        else
+        {
+            int index = word.IndexOf(ch);
+            string firstHalf = word.Substring(0, index + 1);
+            string secondHalf = word.Substring(index + 1);
+            string firstHalfReversed = new string(firstHalf.Reverse().ToArray());
+            output = firstHalfReversed + secondHalf;
+        }
+        return output;
+    }
+}

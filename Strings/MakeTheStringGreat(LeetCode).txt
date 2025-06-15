@@ -1,0 +1,17 @@
+public class Solution 
+{
+    public string MakeGood(string s) 
+    {
+        if (string.IsNullOrEmpty(s) || (s.Length == 1 && char.IsLower(s[0])))
+            return s;
+        StringBuilder sb = new StringBuilder();
+        foreach (char c in s)
+        {
+            if (sb.Length > 0 && Math.Abs(sb[sb.Length - 1] - c) == 32)
+                sb.Length--;
+            else
+                sb.Append(c);
+        }
+        return sb.ToString();
+    }
+}

@@ -1,0 +1,9 @@
+public class Solution 
+{
+    public int HammingDistance(int x, int y) 
+    {
+        int xorresult = x ^ y;
+        string xor = Convert.ToString(xorresult, 2);
+        return xor.Count(c => c == '1');
+    }
+}

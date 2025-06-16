@@ -1,0 +1,9 @@
+public class Solution 
+{
+    public uint reverseBits(uint n) 
+    {
+        string reversed = new string(Convert.ToString(n, 2).PadLeft(32, '0').Reverse().ToArray());
+        uint output = Convert.ToUInt32(reversed, 2);
+        return output;
+    }
+}

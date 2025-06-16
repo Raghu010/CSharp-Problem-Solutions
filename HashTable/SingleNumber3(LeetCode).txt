@@ -1,0 +1,22 @@
+public class Solution 
+{
+    public int[] SingleNumber(int[] nums) 
+    {
+        Dictionary<int, int> dict = new Dictionary<int, int>();
+        List<int> output = new List<int>();
+        foreach (int num in nums) 
+        {
+            if (dict.ContainsKey(num))
+                dict[num]++;
+            else
+                dict[num] = 1;
+        }
+
+        var twoCounts = dict.Where(kvp => kvp.Value == 1).OrderBy(kvp => kvp.Key);
+        foreach (var item in twoCounts)
+        {
+            output.Add(item.Key);
+        }
+        return output.ToArray();
+    }
+}

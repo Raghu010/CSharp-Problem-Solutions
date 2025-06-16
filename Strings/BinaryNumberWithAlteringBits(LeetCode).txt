@@ -1,0 +1,15 @@
+public class Solution 
+{
+    public bool HasAlternatingBits(int n) 
+    {
+        string bin = Convert.ToString(n, 2);
+        for(int i = 1; i < bin.Length; i++)
+        {
+            if (bin[i] == bin[i - 1])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+}

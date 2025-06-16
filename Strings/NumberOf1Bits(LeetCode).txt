@@ -1,0 +1,16 @@
+public class Solution 
+{
+    public int HammingWeight(int n) 
+    {
+        string binary = Convert.ToString(n, 2);
+        int count = 0;
+        foreach (var i in binary) 
+        {
+            if(i == '1')
+            {
+                count = count + 1;
+            }
+        }
+        return count;
+    }
+}

@@ -1,0 +1,17 @@
+public class Solution 
+{
+    public IList<string> TopKFrequent(string[] words, int k) 
+    {
+        Dictionary<string, int> dict = new Dictionary<string, int>();
+        foreach (string word in words) 
+        {
+            if (dict.ContainsKey(word))
+                dict[word]++;
+            else
+                dict[word] = 1;
+        }
+
+        var ordered = dict.OrderByDescending(kvp => kvp.Value).ThenBy(kvp => kvp.Key).ToList();
+        return ordered.Take(k).Select(kvp => kvp.Key).ToList();
+    }
+}

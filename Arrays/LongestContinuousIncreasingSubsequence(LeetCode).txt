@@ -1,0 +1,15 @@
+public class Solution 
+{
+    public int FindLengthOfLCIS(int[] nums) 
+    {
+        int result = 0;
+        int indexTracker = 0;
+        for (int i = 0; i < nums.Length; i++) 
+        {
+            if (i > 0 && nums[i] <= nums[i - 1])
+                indexTracker = i;
+            result = Math.Max(result, i - indexTracker + 1);
+        }
+        return result;
+    }
+}

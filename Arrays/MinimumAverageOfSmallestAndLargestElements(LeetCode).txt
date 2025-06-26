@@ -1,0 +1,21 @@
+public class Solution 
+{
+    public double MinimumAverage(int[] nums) 
+    {
+        double[] averages = new double[nums.Length/2];
+        var list = nums.ToList();
+        int index = 0;
+        while (list.Count > 0) 
+        {
+            int max = list.Max();
+            int min = list.Min();
+            double numerator = max + min;
+            double denominator = 2;
+            averages[index] = numerator / denominator;
+            index++;
+            list.Remove(min);
+            list.Remove(max);
+        }
+        return averages.Min();
+    }
+}

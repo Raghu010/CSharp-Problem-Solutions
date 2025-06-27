@@ -1,0 +1,28 @@
+public class Solution 
+{
+    public int MaxIceCream(int[] costs, int coins) 
+    {
+        Array.Sort(costs);
+        int count = 0;
+        int sum = 0;
+        for (int i = 0; i < costs.Length; i++) 
+        {
+            sum = sum + costs[i];
+            if(sum == coins)
+            {
+                count = i + 1;
+                break;
+            }
+            else if(sum > coins)
+            {
+                count = i; 
+                break;
+            }
+            else if (sum < coins && i == costs.Length - 1)
+            {
+                return costs.Length;
+            }
+        }
+        return count;
+    }
+}

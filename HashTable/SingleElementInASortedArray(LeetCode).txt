@@ -1,0 +1,15 @@
+public class Solution 
+{
+    public int SingleNonDuplicate(int[] nums) 
+    {
+        Dictionary<int, int> output = new Dictionary<int, int>();
+        for(int i = 0; i < nums.Length; i++)
+        {
+            if (output.ContainsKey(nums[i]))
+                output[nums[i]]++;
+            else
+                output[nums[i]] = 1;
+        }
+        return output.First(kvp => kvp.Value == 1).Key;
+    }
+}

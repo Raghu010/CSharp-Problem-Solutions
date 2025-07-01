@@ -1,0 +1,26 @@
+public class Solution 
+{
+    public string GreatestLetter(string s) 
+    {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.Length; i++) 
+        {
+            int compareAscii = (int)s[i];
+            for (int j = 0; j < s.Length; j++) 
+            {
+                if(i != j)
+                {
+                    int asciiVal = (int)s[j];
+                    int difference = asciiVal - compareAscii;
+                    if(Math.Abs(difference) == 32)
+                    {
+                        sb.Append(s[j].ToString().ToUpper());
+                    }
+                }
+            }
+        }
+        string distinct = new string(sb.ToString().Distinct().ToArray());
+        char MaxValue = distinct.Length > 0 ? distinct.Max() : ' ';
+        return MaxValue.ToString().Trim();
+    }
+}

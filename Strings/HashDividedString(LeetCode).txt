@@ -1,0 +1,27 @@
+public class Solution 
+{
+    public string StringHash(string s, int k) 
+    {
+        int strLen = s.Length / k;
+        List<List<int>> ints = new List<List<int>>();
+        List<string> subStrings = new List<string>();
+        List<int> remainders = new List<int>();
+        for (int i = 0; i < s.Length; i+=k) 
+        {
+            string subStr = s.Substring(i, k);
+            subStrings.Add(subStr);
+        }
+
+        foreach (string str in subStrings) 
+        {
+            ints.Add(str.Select(ch => ch - 'a').ToList());
+        }
+        List<int> sums = ints.Select(innerList => innerList.Sum()).ToList();
+
+        foreach(int i in sums)
+        {
+            remainders.Add(i % 26);
+        }
+        return new string(remainders.Select(n => (char)('a' + n)).ToArray());
+    }
+}

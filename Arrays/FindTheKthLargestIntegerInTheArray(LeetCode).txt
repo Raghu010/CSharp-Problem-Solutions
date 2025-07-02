@@ -1,0 +1,7 @@
+public class Solution 
+{
+    public string KthLargestNumber(string[] nums, int k) 
+    {
+        return nums.OrderByDescending(s => s.Length).ThenByDescending(s => s).ElementAt(k - 1);
+    }
+}

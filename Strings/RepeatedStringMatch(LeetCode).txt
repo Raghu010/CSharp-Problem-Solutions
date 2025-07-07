@@ -1,0 +1,24 @@
+public class Solution 
+{
+    public int RepeatedStringMatch(string a, string b) 
+    {
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+        while(sb.Length < b.Length)
+        {
+            sb.Append(a);
+            count = count + 1;
+        }
+
+        if (sb.ToString().Contains(b))
+            return count;
+
+        sb.Append(a);
+        count = count + 1;
+
+        if (sb.ToString().Contains(b))
+            return count;
+
+        return -1;
+    }
+}

@@ -1,0 +1,18 @@
+public class Solution 
+{
+    public int AppendCharacters(string s, string t) 
+    {
+        int sindex = 0;
+        int tindex = 0;
+
+        while (sindex < s.Length && tindex < t.Length) 
+        {
+            if (s[sindex] == t[tindex])
+            {
+                tindex = tindex + 1;
+            }
+            sindex = sindex + 1;
+        }
+        return t.Length - tindex;    
+    }
+}

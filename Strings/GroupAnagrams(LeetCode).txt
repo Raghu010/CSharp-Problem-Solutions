@@ -1,0 +1,26 @@
+public class Solution 
+{
+    public IList<IList<string>> GroupAnagrams(string[] strs) 
+    {
+        string[] sortedArray = strs.Select(s => new string(s.OrderBy(c => c).ToArray())).ToArray();
+        IList<IList<string>> outerList = new List<IList<string>>(); 
+        bool[] visited = new bool[strs.Length];
+
+        for (int i = 0; i < sortedArray.Length; i++)
+        {
+            if (visited[i])
+                continue;
+            IList<string> innerList = new List<string> { strs[i] };
+            for (int j = i + 1; j < sortedArray.Length; j++)
+            {
+                if (!visited[j] && sortedArray[i].Equals(sortedArray[j]))
+                {
+                    innerList.Add(strs[j]);
+                    visited[j] = true;
+                }
+            }
+            outerList.Add(innerList);
+        }
+        return outerList;
+    }
+}

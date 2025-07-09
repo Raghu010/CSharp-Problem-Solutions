@@ -2,15 +2,17 @@ public class Solution
 {
     public bool IsSubsequence(string s, string t) 
     {
-        var chars = t.ToCharArray();
-        string output = "";
-        foreach (char c in chars) 
+        int i = 0;
+        int j = 0;
+
+        while (i < s.Length && j < t.Length) 
         {
-            if (s.Contains(c))
+            if (s[i] == t[j])
             {
-                output = output + c;
+                i++;
             }
+            j++;
         }
-        return output.Contains(s);
+        return i == s.Length;
     }
 }

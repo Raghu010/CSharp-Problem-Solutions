@@ -1,0 +1,26 @@
+public class Solution 
+{
+    public int FindMinDifference(IList<string> timePoints) 
+    {
+        List<int> minuteList = new List<int>();
+
+        foreach (var time in timePoints) 
+        {
+            string[] colonSplit = time.Split(':');
+            int hours = int.Parse(colonSplit[0]);
+            int minutes = int.Parse(colonSplit[1]);
+            minuteList.Add(hours *  60 + minutes);
+        }
+
+        minuteList.Sort();
+        int minDiff = int.MaxValue;
+
+        for (int i = 1; i < minuteList.Count; i++) 
+        {
+            minDiff = Math.Min(minDiff, minuteList[i] - minuteList[i - 1]);
+        }
+
+        int circularDiff = 1440 - minuteList[minuteList.Count - 1] + minuteList[0];
+        return Math.Min(minDiff, circularDiff);
+    }
+}

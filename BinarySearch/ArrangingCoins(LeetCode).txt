@@ -1,0 +1,22 @@
+public class Solution 
+{
+    public int ArrangeCoins(int n) 
+    {
+        long result = 0;
+        int count = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            result = result + i;
+            if (result > n)
+                break;
+            else if(result == n)
+            {
+                count = count + 1;
+                break;
+            }
+            else
+                count = count + 1;
+        }
+        return count;
+    }
+}

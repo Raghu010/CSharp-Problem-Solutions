@@ -1,0 +1,24 @@
+public class Solution 
+{
+    public int[] SortArrayByParityII(int[] nums) 
+    {
+        List<int> result = new List<int>();
+        List<int> sortedEvens = new List<int>();
+        List<int> sortedOdds = new List<int>();
+        Array.Sort(nums);
+        for (int i = 0; i < nums.Length; i++) 
+        {
+            if (nums[i] % 2 == 0)
+                sortedEvens.Add(nums[i]);
+            else
+                sortedOdds.Add(nums[i]);
+        }
+
+        for (int i = 0; i < sortedEvens.Count; i++)
+        {
+            result.Add(sortedEvens[i]);
+            result.Add(sortedOdds[i]);
+        }
+        return result.ToArray();
+    }
+}

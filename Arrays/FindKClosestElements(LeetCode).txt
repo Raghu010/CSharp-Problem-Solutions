@@ -1,0 +1,20 @@
+public class Solution 
+{
+    public IList<int> FindClosestElements(int[] arr, int k, int x) 
+    {
+        List<int> difference = new List<int>();
+        IList<int> result = new List<int>();
+        for (int i = 0; i < arr.Length; i++) 
+        {
+            difference.Add(Math.Abs(arr[i] - x));
+        }
+
+        var output = difference.Select((value, index) => new { Value = value, Index = index }).OrderBy(a => a.Value).Take(k).Select(val => arr[val.Index]).ToList();
+        output.Sort();
+        foreach (int i in output) 
+        {
+            result.Add(i);
+        }
+        return result;
+    }
+}

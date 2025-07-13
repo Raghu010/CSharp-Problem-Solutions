@@ -1,0 +1,19 @@
+public class Solution 
+{
+    public string[] FindWords(string[] words) 
+    {
+        string[] eachRows = new string[] { "qwertyuiop", "asdfghjkl", "zxcvbnm" };
+        List<string> output = new List<string>();
+        for (int i = 0; i < words.Length; i++) 
+        {
+            for (int j = 0; j < eachRows.Length; j++) 
+            {
+                if (words[i].ToLower().All(c => eachRows[j].Contains(c)))
+                {
+                    output.Add(words[i]);
+                }
+            }
+        }
+        return output.ToArray();
+    }
+}

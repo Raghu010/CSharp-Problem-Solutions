@@ -1,0 +1,21 @@
+public class Solution 
+{
+    public int MaxDifference(string s) 
+    {
+        if(string.IsNullOrEmpty(s)) 
+            return 0;
+        Dictionary<char, int> dict = new Dictionary<char, int>();
+        foreach (char c in s) 
+        {
+            if (dict.ContainsKey(c))
+                dict[c]++;
+            else
+                dict[c] = 1;
+        }
+
+        int? maxOdd = dict.Values.Where(v => v % 2 == 1).DefaultIfEmpty().Max();
+        int? minEven = dict.Values.Where(v => v % 2 == 0).DefaultIfEmpty().Min();
+
+        return (int)maxOdd - (int)minEven;
+    }
+}

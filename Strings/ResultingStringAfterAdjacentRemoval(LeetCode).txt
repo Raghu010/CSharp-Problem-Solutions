@@ -1,0 +1,22 @@
+public class Solution 
+{
+    public string ResultingString(string s) 
+    {
+        Stack<char> stack = new Stack<char>();
+
+        foreach(char c in s)
+        {
+            if(stack.Count > 0)
+            {
+                char top = stack.Peek();
+                if (Math.Abs(top - c) == 1 || (top == 'a' && c == 'z') || (c == 'a' && top == 'z'))
+                {
+                    stack.Pop();
+                    continue;
+                }
+            }
+            stack.Push(c);
+        }
+        return new string(stack.Reverse().ToArray());
+    }
+}

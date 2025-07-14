@@ -1,0 +1,25 @@
+public class Solution 
+{
+    public bool HasSameDigits(string s) 
+    {
+        bool result = false;
+        if(string.IsNullOrEmpty(s)) 
+            return result;
+        while(s.Length > 2)
+        {
+            string afterOps = "";
+            for (int i = 1; i < s.Length; i++)
+            {
+                int sum = 0;
+                int modulo = 0;
+                sum = sum + int.Parse(s[i - 1].ToString()) + int.Parse(s[i].ToString());
+                modulo = sum % 10;
+                afterOps = afterOps + modulo;
+            }
+            s = afterOps;
+        }
+        if (s == new string(s.Reverse().ToArray()))
+            result = true;
+        return result;
+    }
+}

@@ -1,0 +1,23 @@
+public class Solution 
+{
+    public string KthDistinct(string[] arr, int k) 
+    {
+        Dictionary<string, int> dict = new Dictionary<string, int>();
+
+        for (int i = 0; i < arr.Length; i++) 
+        {
+            if(dict.ContainsKey(arr[i]))
+                dict[arr[i]]++;
+            else
+                dict[arr[i]] = 1;
+        }
+
+                var uniqueElements = dict.Where(pair => pair.Value == 1).Select(pair => pair.Key).ToList();
+
+            if (k > uniqueElements.Count)
+                return "";
+            else
+                return uniqueElements[k - 1];
+
+    }
+}

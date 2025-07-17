@@ -1,0 +1,15 @@
+public class Solution 
+{
+    public char NextGreatestLetter(char[] letters, char target) 
+    {
+        Array.Sort(letters);
+        List<int> numbers = new List<int>();
+        int targetValue = (int)target;
+        for (int i = 0; i < letters.Length; i++) 
+        {
+            if(letters[i] > targetValue)
+                numbers.Add((int)letters[i]);
+        }
+        return numbers.Any() ? (char)numbers.Min() : letters[0];
+    }
+}

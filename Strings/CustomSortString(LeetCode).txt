@@ -1,0 +1,8 @@
+public class Solution 
+{
+    public string CustomSortString(string order, string s) 
+    {
+        string result = new string(s.OrderBy(c => order.IndexOf(c) == -1 ? int.MaxValue : order.IndexOf(c)).ToArray());
+        return result;
+    }
+}

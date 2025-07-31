@@ -1,0 +1,14 @@
+public class Solution 
+{
+    public string SortSentence(string s) 
+    {
+        string[] spaceSplit = s.Split(' ');
+        string[] output = new string[spaceSplit.Length];
+        for (int i = 0; i < spaceSplit.Length; i++) 
+        {
+            int number = int.Parse(spaceSplit[i][spaceSplit[i].Length - 1].ToString());
+            output[number - 1] = spaceSplit[i].Substring(0, spaceSplit[i].Length - 1);
+        }
+        return string.Join(" ", output);
+    }
+}

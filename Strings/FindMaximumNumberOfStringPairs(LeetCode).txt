@@ -1,0 +1,23 @@
+public class Solution 
+{
+    public int MaximumNumberOfStringPairs(string[] words) 
+    {
+        HashSet<string> seen = new HashSet<string>();
+        int result = 0;
+
+        foreach (string word in words)
+        {
+            string reversed = new string(word.Reverse().ToArray());
+
+            if (seen.Contains(reversed))
+            {
+                result = result + 1;
+            }
+            else
+            {
+                seen.Add(word);
+            }
+        }
+        return result;
+    }
+}

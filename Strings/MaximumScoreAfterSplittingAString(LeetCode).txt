@@ -1,0 +1,22 @@
+public class Solution 
+{
+    public int MaxScore(string s) 
+    {
+        List<int> result = new List<int>();
+        for (int i = 0; i < s.Length - 1; i++) 
+        {
+            string split1 = "";
+            string split2 = "";
+
+            split1 = s.Substring(0, i+1);
+            split2 = s.Substring(i + 1);
+
+            int zerosCount = split1.Count(c => c == '0');
+            int onesCount = split2.Count(c => c == '1');
+
+            int sum = zerosCount + onesCount;
+            result.Add(sum);
+        }
+        return result.Max();
+    }
+}

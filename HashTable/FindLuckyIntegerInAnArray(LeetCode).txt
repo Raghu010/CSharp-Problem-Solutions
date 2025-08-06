@@ -1,0 +1,28 @@
+public class Solution 
+{
+    public int FindLucky(int[] arr) 
+    {
+        Dictionary<int, int> valueCount = new Dictionary<int, int>();
+        List<int> luckyNumbers = new List<int>();
+        for (int i = 0; i < arr.Length; i++) 
+        {
+            if (valueCount.ContainsKey(arr[i]))
+            {
+                valueCount[arr[i]]++;
+            }
+            else
+            {
+                valueCount[arr[i]] = 1;
+            }
+        }
+
+        foreach (var kvp in valueCount) 
+        {
+            if (kvp.Key == kvp.Value) 
+            {
+                luckyNumbers.Add(kvp.Key);
+            }
+        }
+        return luckyNumbers.Any() ? luckyNumbers.Max() : -1;
+    }
+}
